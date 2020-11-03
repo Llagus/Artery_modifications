@@ -6,3 +6,11 @@ src/artery/messages/*_m.cc
 src/artery/messages/*_m.h
 www/
 .vagrant/
+*.log
+omnetpp-5.6.2/samples/tictoc_ll/doc/
+omnetpp-5.6.2/samples/.metadata/
+.vscode/
+omnetpp-5.6.2/samples/inet/
+omnetpp-5.6.2/samples/.metadata/.log
+omnetpp-5.6.2/samples/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources
+        
