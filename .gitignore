@@ -7,7 +7,7 @@ src/artery/messages/*_m.h
 www/
 .vagrant/
 *.log
-omnetpp-5.6.2/samples/tictoc_ll/doc/
+omnetpp-5.6.2/samples/tictoc_ll/out/
 omnetpp-5.6.2/samples/.metadata/
 .vscode/
 omnetpp-5.6.2/samples/inet/
