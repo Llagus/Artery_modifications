@@ -2,7 +2,7 @@
 # OMNeT++/OMNEST Makefile for tictoc_ll
 #
 # This file was generated with the command:
-#  opp_makemake
+#  opp_makemake -f --deep -O out -I.
 #
 
 # Name of target to be created (-o option)
@@ -16,7 +16,7 @@ USERIF_LIBS = $(ALL_ENV_LIBS) # that is, $(TKENV_LIBS) $(QTENV_LIBS) $(CMDENV_LI
 #USERIF_LIBS = $(QTENV_LIBS)
 
 # C++ include paths (with -I)
-INCLUDE_PATH =
+INCLUDE_PATH = -I.
 
 # Additional object and library files to link with
 EXTRA_OBJS =
@@ -30,7 +30,7 @@ PROJECTRELATIVE_PATH =
 O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cc, .msg and .sm files
-OBJS = $O/txc1.o
+OBJS = $O/txc1.o $O/txc2.o $O/txc3.o $O/txc4.o $O/txc5.o
 
 # Message files
 MSGFILES =
