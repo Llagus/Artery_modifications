@@ -26,6 +26,6 @@ network Tictoc6{
         tic: Tic6; 
         toc: Toc6; 
     connections: 
-    tic.out-->{ delay = 100ms; }-->toc.in;
-    tic.in<--{ delay = 100ms; }<--toc.out; 
+        tic.out-->{ delay = 100ms; }-->toc.in;
+        tic.in<--{ delay = 100ms; }<--toc.out; 
 }
