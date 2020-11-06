@@ -1,0 +1,91 @@
+#include <iostream>
+#include <string.h>
+#include <omnetpp.h>
+
+using namespace omnetpp; 
+
+
+class Tic8 : public cSimpleModule {
+
+    public: 
+        Tic8();
+        virtual ~Tic8();
+
+    private: 
+        simtime_t timeout; 
+        cMessage *timeoutEvent; 
+    protected: 
+        virtual void initialize() override; 
+        virtual void handleMessage(cMessage *msg) override;
+};
+
+
+Define_Module(Tic8); 
+
+
+class Toc8 : public cSimpleModule {
+    protected: 
+        virtual void handleMessage(cMessage *msg) override;
+};
+
+
+Define_Module(Toc8); 
+
+
+Tic8::Tic8(){
+    timeoutEvent = nullptr;  
+}
+
+
+Tic8::~Tic8(){
+    cancelAndDelete(timeoutEvent);
+}
+
+
+void Tic8::initialize(){
+    //initialize variables
+    timeout = 1.0; 
+    timeoutEvent = new cMessage("timeoutEvent");
+
+    //Generate and send message
+    EV << "Sending initial message";
+    cMessage *msg = new cMessage("tictocMsg");
+    send(msg,"out"); 
+    scheduleAt(simTime()+timeout, timeoutEvent);   
+}
+
+
+void Tic8::handleMessage(cMessage *msg){
+    if (msg == timeoutEvent){
+        EV << "Timeout expired, ressending message and restarting timer\n";
+        cMessage *tictocMsg = new cMessage("tictocMsg");
+        send(tictocMsg,"out"); 
+        scheduleAt(simTime()+timeout,timeoutEvent);
+    }
+    else {
+        //The message arrived
+        //Acknowledgement received
+        //delete recieved message and cancel timeoutEvent
+        EV << "Timer cancelled\n";
+        cancelEvent(timeoutEvent); 
+        delete msg; 
+
+        //Ready to send another message
+        cMessage *newMsg = new cMessage("tictocMsg");
+        send(newMsg, "out");
+        scheduleAt(simTime()+timeout, timeoutEvent); 
+    }
+}
+
+
+void Toc8::handleMessage(cMessage *msg){
+    if (uniform(0,1) < 0.1){
+        EV << "\"Losing\" message\n";
+        bubble("message lost :(");
+        delete msg; 
+    }
+    else {
+        EV << "Sending back same message as ack.\n";
+        send(msg, "out") ; 
+    }
+}
