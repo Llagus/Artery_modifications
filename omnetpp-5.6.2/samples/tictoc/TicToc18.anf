@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scave:Analysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:scave="http://www.omnetpp.org/omnetpp/scave">
+  <inputs>
+    <inputs name="/tictoc/results/TicToc18-*.vec"/>
+    <inputs name="/tictoc/results/TicToc18-*.sca"/>
+  </inputs>
+  <datasets>
+    <datasets name="Average number of packets/ average hopcount">
+      <items xsi:type="scave:Add" filterPattern=""/>
+      <items xsi:type="scave:ComputeScalar" scalarName="AvgHopCount" valueExpr="mean(**.'hopCount:stats:mean')" moduleExpr="TicToc*.tic[*]" groupByExpr=""/>
+      <items xsi:type="scave:ComputeScalar" scalarName="AvgNumPackets " valueExpr="mean('hopCount:stats:count')" moduleExpr="TicToc*.tic[*]" groupByExpr=""/>
+      <items xsi:type="scave:ScatterChart" name="Average number of packets" xDataPattern="module(_runattrs_) AND name(N)">
+        <filters xsi:type="scave:Select" filterPattern="AvgNumPackets or N"/>
+      </items>
+      <items xsi:type="scave:ScatterChart" name="Average hop count" xDataPattern="module(_runattrs_) AND name(N)">
+        <filters xsi:type="scave:Select" filterPattern="AvgHopCount or N"/>
+      </items>
+    </datasets>
+  </datasets>
+  <chartSheets>
+    <chartSheets name="default" charts="//@datasets/@datasets.0/@items.3 //@datasets/@datasets.0/@items.4"/>
+  </chartSheets>
+</scave:Analysis>
