@@ -9,7 +9,7 @@ www/
 *.log
 Makefile
 .vscode/
-build/*
+build/
 
 
 .settings/
