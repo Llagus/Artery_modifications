@@ -90,7 +90,9 @@ module Radio like IRadio
         @statistic[transmissionState](title="Radio transmission state"; source=transmissionStateChanged; record=count,vector; interpolationmode=sample-hold);
 
         @statistic[minSNIR](title="Min SNIR"; source=minSNIR; record=histogram);
-        @statistic[packetErrorRate](title="Packet error rate"; source=packetErrorRate; record=histogram);
+        //Eudald
+        //@statistic[packetErrorRate](title="Packet error rate"; source=packetErrorRate; record=histogram);
+        @statistic[packetErrorRate](title="Packet error rate"; source=packetErrorRate; record=histogram, vector);
         @statistic[bitErrorRate](title="Bit error rate"; source=bitErrorRate; record=histogram);
         @statistic[symbolErrorRate](title="Symbol error rate"; source=symbolErrorRate; record=histogram);
 
