@@ -73,6 +73,8 @@ module Radio like IRadio
         @display("i=block/wrxtx");
 
         @signal[packetSentToUpper](type=cPacket);
+        //Eudald
+        @signal[packetID](type=long);
         @signal[packetReceivedFromUpper](type=cPacket);
         @signal[radioModeChanged](type=long);
         @signal[listeningChanged];
@@ -88,10 +90,11 @@ module Radio like IRadio
         @statistic[radioMode](title="Radio mode"; source=radioModeChanged; record=count,vector; interpolationmode=sample-hold);
         @statistic[receptionState](title="Radio reception state"; source=receptionStateChanged; record=count,vector; interpolationmode=sample-hold);
         @statistic[transmissionState](title="Radio transmission state"; source=transmissionStateChanged; record=count,vector; interpolationmode=sample-hold);
-
         @statistic[minSNIR](title="Min SNIR"; source=minSNIR; record=histogram);
         //Eudald
         //@statistic[packetErrorRate](title="Packet error rate"; source=packetErrorRate; record=histogram);
+        @statistic[packetID](title="Packet send"; source=packetID; record=histogram, vector; interpolationmode=sample-hold);
+        //
         @statistic[packetErrorRate](title="Packet error rate"; source=packetErrorRate; record=histogram, vector);
         @statistic[bitErrorRate](title="Bit error rate"; source=bitErrorRate; record=histogram);
         @statistic[symbolErrorRate](title="Symbol error rate"; source=symbolErrorRate; record=histogram);

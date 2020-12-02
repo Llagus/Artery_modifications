@@ -35,6 +35,8 @@ simsignal_t Radio::minSNIRSignal = cComponent::registerSignal("minSNIR");
 simsignal_t Radio::packetErrorRateSignal = cComponent::registerSignal("packetErrorRate");
 simsignal_t Radio::bitErrorRateSignal = cComponent::registerSignal("bitErrorRate");
 simsignal_t Radio::symbolErrorRateSignal = cComponent::registerSignal("symbolErrorRate");
+//Eudald
+simsignal_t Radio::packetID = cComponent::registerSignal("packetID");
 
 Radio::~Radio()
 {
@@ -486,6 +488,8 @@ void Radio::endReception(cMessage *timer)
             auto isReceptionSuccessful = medium->getReceptionDecision(this, radioFrame->getListening(), transmission, part)->isReceptionSuccessful();
             EV_INFO << "Reception ended: " << (isReceptionSuccessful ? "successfully" : "unsuccessfully") << " for " << (IRadioFrame *)radioFrame << " " << IRadioSignal::getSignalPartName(part) << " as " << reception << endl;
             auto macFrame = medium->receivePacket(this, radioFrame);
+            //Eudald 
+            emit(packetID, macFrame->getSenderModuleId());
             emit(LayeredProtocolBase::packetSentToUpperSignal, macFrame);
             sendUp(macFrame);
             receptionTimer = nullptr;

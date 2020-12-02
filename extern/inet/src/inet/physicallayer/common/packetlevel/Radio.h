@@ -65,6 +65,8 @@ class INET_API Radio : public PhysicalLayerBase, public virtual IRadio
     static simsignal_t packetErrorRateSignal;
     static simsignal_t bitErrorRateSignal;
     static simsignal_t symbolErrorRateSignal;
+    //Eudald
+    static simsignal_t packetID; 
 
   protected:
     /**
