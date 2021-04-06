@@ -1,0 +1,1 @@
+add_opp_run(i2cat2 NED_FOLDERS ${CMAKE_CURRENT_SOURCE_DIR})
