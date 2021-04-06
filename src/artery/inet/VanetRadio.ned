@@ -8,5 +8,7 @@ module VanetRadio extends Ieee80211ScalarRadio
         @class(VanetRadio);
 
         // signal on incoming radio frame
-        @signal[RadioFrame](type=cPacket);
+        //@signal[RadioFrame](type=cPacket);
+        @signal[RadioFrame](type=long);
+        @statistic[RadioFrame](record = vector);
 }

@@ -8,6 +8,15 @@
 #include <omnetpp/clistener.h>
 #include <memory>
 #include <string>
+/************************************************************************************************//**
+ * Changes done by Eudald. 
+ * 
+ * Extracting the desired data and puting it in a text file. 
+ * 
+ ***************************************************************************************************/
+#include <iostream>
+#include <fstream>
+#include <experimental/filesystem>
 
 namespace artery
 {
@@ -29,6 +38,8 @@ public:
     static omnetpp::simsignal_t stateChangedSignal;
 
 protected:
+    std::string m_text;
+    std::ofstream m_file; 
     std::string mVehicleId;
     traci::LiteAPI* mTraci = nullptr;
     traci::Boundary mNetBoundary;

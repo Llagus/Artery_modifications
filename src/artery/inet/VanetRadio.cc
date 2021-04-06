@@ -18,7 +18,7 @@ const omnetpp::simsignal_t VanetRadio::RadioFrameSignal = omnetpp::cComponent::r
 void VanetRadio::handleLowerPacket(inet::physicallayer::RadioFrame* frame)
 {
     phy::Ieee80211Radio::handleLowerPacket(frame);
-    emit(RadioFrameSignal, frame);
+    emit(RadioFrameSignal, frame->getId());
 }
 
 } // namespace artery
