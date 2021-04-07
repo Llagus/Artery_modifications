@@ -489,7 +489,8 @@ void Radio::endReception(cMessage *timer)
             EV_INFO << "Reception ended: " << (isReceptionSuccessful ? "successfully" : "unsuccessfully") << " for " << (IRadioFrame *)radioFrame << " " << IRadioSignal::getSignalPartName(part) << " as " << reception << endl;
             auto macFrame = medium->receivePacket(this, radioFrame);
             //Eudald 
-            emit(packetID, macFrame->getSenderModuleId());
+            std::cout << static_cast<cModule*>( getSimulation()->getModule(macFrame->getSenderModuleId())->getOwner()->getOwner())->getIndex() << std::endl;
+            emit(packetID, static_cast<cModule*>( getSimulation()->getModule(macFrame->getSenderModuleId())->getOwner()->getOwner())->getIndex());
             emit(LayeredProtocolBase::packetSentToUpperSignal, macFrame);
             sendUp(macFrame);
             receptionTimer = nullptr;
