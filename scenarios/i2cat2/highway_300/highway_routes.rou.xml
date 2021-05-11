@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes>
+    <vType id="car" type="passenger" length="5" accel="3.5" decel="2.2" sigma="1.0"/>
+    <flow id="carflow1" type="car" beg="0" end="0" number="75" from="E0" to="-E0" departPos="random_free" departLane="random" departSpeed="max"/>
+    <flow id="carflow2" type="car" beg="0" end="0" number="75" from="-E1" to="E1" departPos="random_free" departLane="random" departSpeed="max"/>
+    <flow id="carflow3" type="car" beg="0" end="0" number="75" from="E1" to="-E0" departPos="random_free" departLane="random" departSpeed="max"/>
+    <flow id="carflow4" type="car" beg="0" end="0" number="75" from="-E0" to="E1" departPos="random_free" departLane="random" departSpeed="max"/>
+ </routes>
