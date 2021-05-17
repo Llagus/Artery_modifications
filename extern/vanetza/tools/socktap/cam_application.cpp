@@ -121,7 +121,9 @@ void CamApplication::on_timer(Clock::time_point)
     }
 
     DownPacketPtr packet { new DownPacket() };
-    packet->layer(OsiLayer::Application) = std::move(message);
+    vanetza::ByteBuffer n_message{ 0x00, 0x00, 0x00, 0x00, 0x00};
+    // packet->layer(OsiLayer::Application) = std::move(message);
+    packet->layer(OsiLayer::Application) = std::move(n_message);
 
     DataRequest request;
     request.its_aid = aid::CA;
