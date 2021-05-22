@@ -48,9 +48,11 @@ std::ostream& NakagamiFading::printToStream(std::ostream& stream, int level) con
 
 double NakagamiFading::computePathLoss(mps propagationSpeed, Hz frequency, m distance) const
 {
+    double temp_distance = double(distance.get());
+    double shapeFactor_test = 2.7*exp(-0.01*(distance.get() - 1.0))+1.0;
     m waveLength = propagationSpeed / frequency;
     double freeSpacePathLoss = computeFreeSpacePathLoss(waveLength, distance, alpha, systemLoss);
-    return gamma_d(shapeFactor, freeSpacePathLoss / 1000.0 / shapeFactor) * 1000.0;
+    return gamma_d(shapeFactor_test, freeSpacePathLoss / 1000.0 / shapeFactor_test) * 1000.0;
 }
 
 } // namespace physicallayer
